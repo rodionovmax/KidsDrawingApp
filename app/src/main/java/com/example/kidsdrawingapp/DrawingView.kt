@@ -3,6 +3,7 @@ package com.example.kidsdrawingapp
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.Log
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
@@ -41,7 +42,12 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
     // Change Canvas to Canvas? if fails
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas.drawBitmap(mCanvasBitmap!!, 0f, 0f, mCanvasPaint)
+        if(mCanvasBitmap != null){
+            canvas.drawBitmap(mCanvasBitmap!!, 0f, 0f, mCanvasPaint);
+        } else {
+            Log.d("DEBUG","background is null");
+        }
+//        canvas.drawBitmap(mCanvasBitmap!!, 0f, 0f, mCanvasPaint)
 
         for (path in mPaths) {
             mDrawPaint!!.strokeWidth = path.brushThickness
