@@ -47,7 +47,6 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         } else {
             Log.d("DEBUG","background is null");
         }
-//        canvas.drawBitmap(mCanvasBitmap!!, 0f, 0f, mCanvasPaint)
 
         for (path in mPaths) {
             mDrawPaint!!.strokeWidth = path.brushThickness
@@ -92,6 +91,11 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
             TypedValue.COMPLEX_UNIT_DIP, newSize, resources.displayMetrics
         )
         mDrawPaint!!.strokeWidth = mBrushSize
+    }
+
+    fun setColor(newColor: String){
+        color = Color.parseColor(newColor)
+        mDrawPaint!!.color = color
     }
 
     internal inner class CustomPath(var color: Int, var brushThickness: Float) : Path() {
